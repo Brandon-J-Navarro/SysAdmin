@@ -1,0 +1,46 @@
+services:
+    web:
+        image: cbcrowe/pihole-unbound:2022.08.2
+        build: .
+        volumes:
+            - ./portainer/Files/AppData/Config/PiHole-Unbound/DNS:/etc/dnsmasq.d
+            - ./portainer/Files/AppData/Config/PiHole-Unbound:/etc/pihole
+        ports:
+            - "4443:443/tcp"
+            - "53:53/tcp"
+            - "53:53/udp"
+            - "1010:80/tcp"
+        environment:
+            - DNS1=127.0.0.1#5335
+            - DNS2=127.0.0.1#5335
+            - DNSMASQ_USER=pihole
+            - DNSSEC=true
+            - FTL_CMD=no-daemon
+            - FTLCONF_LOCAL_IPV4=0.0.0.0
+            - IPv6=True
+            - PATH=/opt/pihole:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+            - PHP_ENV_CONFIG=/etc/lighttpd/conf-enabled/15-fastcgi-php.conf
+            - PHP_ERROR_LOG=/var/log/lighttpd/error-pihole.log
+            - phpver=php
+            - PIHOLE_DOCKER_TAG=2022.08.2
+            - PIHOLE_INSTALL=/etc/.pihole/automated install/basic-install.sh
+            - S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+            - S6_KEEP_ENV=1
+            - S6_LOGGING=0
+            - S6_OVERLAY_VERSION=v3.1.1.2
+            - ServerIP=192.168.0.217
+            - TZ=America\New_York
+            - WEBPASSWORD=[PASSWORD]
+        labels:
+            - org.opencontainers.image.created=2022-08-25T23:42:00.098Z
+            - org.opencontainers.image.description=Pi-hole in a docker container
+            - org.opencontainers.image.licenses
+            - org.opencontainers.image.revision=9039a73272e91d811ccda3316d5c5ddb751b7e91
+            - org.opencontainers.image.source=https://github.com/pi-hole/docker-pi-hole
+            - org.opencontainers.image.title=docker-pi-hole
+            - org.opencontainers.image.url=https://github.com/pi-hole/docker-pi-hole
+            - org.opencontainers.image.version=2022.08.2
+        entrypoint:	
+            - /bin/bash -c ./s6-init
+        networks:
+            - bridge

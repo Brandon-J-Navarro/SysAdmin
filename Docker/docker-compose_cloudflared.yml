@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+    db:
+        image: cloudflare/cloudflared:latest
+        restart: always
+        command: tunnel run
+        environment:
+            - TUNNEL_TOKEN=[TOKEN]

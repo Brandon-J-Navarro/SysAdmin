@@ -1,0 +1,69 @@
+version: '2'
+
+services:
+    # MongoDB: https://hub.docker.com/_/mongo/
+    mongodb:
+        image: mongo:latest
+        volumes:
+            - /graylog/mongo_data:/data/db
+        networks:
+            - graylog
+
+    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/7.10/docker.html
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+        volumes:
+            - /graylog/es_data:/var/lib/elasticsearch/data
+        environment:
+            - http.host=0.0.0.0
+            - transport.host=localhost
+            - network.host=0.0.0.0
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+            nofile:
+                soft: 64000
+                hard: 64000
+        mem_limit: 1g
+        networks:
+            - graylog
+
+    # Graylog: https://hub.docker.com/r/graylog/graylog/
+    graylog:
+        image: graylog/graylog:5.1.0-rc.1-1
+        volumes:
+            - /garylog/graylog_data:/var/lib/graylog/data
+        environment:
+        # CHANGE ME (must be at least 16 characters)!
+            - GRAYLOG_PASSWORD_SECRET=[PASSWORD]
+        # Password: admin
+        #echo -n "Enter Password: " && head -1 < /dev/stdin | tr -d '\n' | sha256sum | cut -d " " -f1
+            - GRAYLOG_ROOT_PASSWORD_SHA2=[SHA256PASSWORD]
+            - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+        entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 -- /docker-entrypoint.sh
+        links:
+            - mongodb:mongo
+            - elasticsearch
+        restart: always
+        depends_on:
+            - mongodb
+            - elasticsearch
+        networks:
+            - graylog
+        ports:
+            - 9090:9000 # Graylog web interface and REST API
+            - 1514:1514 # Syslog TCP
+            - 1514:1514/udp # Syslog UDP
+            - 12201:12201 # GELF TCP
+            - 12201:12201/udp # GELF UDP
+
+volumes:
+    mongo_data:
+    es_data:
+    graylog_data:
+
+networks:
+    graylog:
+        driver: bridge
