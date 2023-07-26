@@ -1,3 +1,25 @@
+# Released under MIT License
+
+# Copyright (c) 2023 Brandon J. Navarro
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 # 1. Update package list and upgrade any existing packages.
 sudo apt update
 sudo apt full-upgrade
@@ -36,7 +58,7 @@ dtoverlay=disable-bt
 # To safely reboot the device, you can use the following command.
 sudo reboot
 
-# Blocking Wi-Fi using the Modprobe Blacklist
+# Blocking Wi-Fi using the Modprobe Blacklist for Raspberry Pi.
 # Modprobe is a special piece of software used to load kernel modules into the Linux kernel itself.
 # We can use a feature of modprobe to block it from loading in the kernel modules used for the Wi-Fi or Bluetooth connections.
 # 1. On your Raspberry Pi, run the following command to edit the “raspi-blacklist.conf” file.

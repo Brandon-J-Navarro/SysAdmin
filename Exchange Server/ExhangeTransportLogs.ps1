@@ -31,25 +31,6 @@ SOFTWARE.
     Major Release History:
                 ?   - Initial Creation.
         07/25/2023  - Initial Release.
-
-.SYNOPSIS
-    None
-
-.DESCRIPTION
-    None
-
-.PARAMETER None
-    None
-
-.INPUTS
-    None
-
-.OUTPUTS
-    None
-
-.EXAMPLE
-    None
-
 #>
 Function init {
     $timestamp = Get-Date -Format 'yyyyMMddHHmmsss'

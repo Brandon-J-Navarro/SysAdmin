@@ -31,26 +31,8 @@ SOFTWARE.
     Major Release History:
         04/21/2023  - Initial Creation.
         07/25/2023  - Initial Release.
-
-.SYNOPSIS
-    None
-
-.DESCRIPTION
-    None
-
-.PARAMETER none
-    None
-
-.INPUTS
-    None
-
-.OUTPUTS
-    None
-
-.EXAMPLE
-    None
-
 #>
+
 #-------------Required Informations-------------
 $orgURL = 'https://[Orgnization].[DevOpsURl].com/[COLLECTIONNAME]/'
 $PersonalToken = '[PersonalToken]'

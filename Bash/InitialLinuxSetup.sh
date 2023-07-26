@@ -1,7 +1,25 @@
-#Protect Linux Server
-#SOURCE: https://learn.networkchuck.com/courses/take/ad-free-youtube-videos/lessons/22626695-protect-your-linux-server-from-hackers-5-step
+# Released under MIT License
 
-#STEP 1 - Enable Automatic Updates
+# Copyright (c) 2023 Brandon J. Navarro
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 #Manual Updates:
 sudo apt update
 sudo apt dist-upgrade
@@ -10,15 +28,12 @@ sudo apt dist-upgrade
 sudo apt install unattended-upgrades
 sudo dpkg-reconfigure --priority=low unattended-upgrades
 
-
-#STEP 2 - Create a Limited User Account
 #Create a User:
-adduser {username}
+adduser [USERNAME]
 
 #Add user to the sudo group:
-usermod -aG sudo {username}
+usermod -aG sudo [USERNAME]
 
-#STEP 3 - Passwords are for SUCKERS!
 #Create the Public Key Directory on your Linux Server
 mkdir ~/.ssh && chmod 700 ~/.ssh
 
@@ -26,20 +41,17 @@ mkdir ~/.ssh && chmod 700 ~/.ssh
 ssh-keygen -b 4096
 
 #Upload your Public key to the your Linux Server (Windows)
-scp $env:USERPROFILE/.ssh/id_rsa.pub {username}@{server ip}:~/.ssh/authorized_keys
+scp $env:USERPROFILE/.ssh/id_rsa.pub [USERNAME]@[IPADDRESS]:~/.ssh/authorized_keys
 
 #Upload your Public key to the your Linux Server (MAC)
-scp ~/.ssh/id_rsa.pub {username}@{server ip}:~/.ssh/authorized_keys
+scp ~/.ssh/id_rsa.pub [USERNAME]@[IPADDRESS]:~/.ssh/authorized_keys
 
 #Upload your Public key to the your Linux Server (LINUX)
-ssh-copy-id {username}@{server ip}
+ssh-copy-id [USERNAME]@[IPADDRESS]
 
-#STEP 4 - Lockdown Logins
 #Edit the SSH config file
 sudo nano /etc/ssh/sshd_config
 
-
-#STEP 5 - FIREWALL IT UP
 #See open ports
 sudo ss -tupln
 
@@ -50,7 +62,7 @@ apt install ufw
 sudo ufw status
 
 #Allow port through firewall
-sudo ufw allow {port number}
+sudo ufw allow [PORTNUMBER]
 
 #Enable Firewall
 sudo ufw enable
@@ -58,9 +70,7 @@ sudo ufw enable
 #Reload Firewall
 sudo ufw reload
 
-#Drop pings
-#Edit the UFW config file
+#Edit the UFW config file to drop pings
 sudo nano /etc/ufw/before.rules
-
 #Add this line of config:
 -A ufw-before-input -p icmp --icmp-type echo-request -j DROP

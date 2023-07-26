@@ -1,5 +1,5 @@
-#FROM
-    #SOURCES: https://kasmweb.com/docs/latest/install/single_server_install.html
+# Copyright 2023, Kasm Technologies.
+# SOURCE: https://kasmweb.com/docs/latest/install/single_server_install.html
 
 #Swap file
 sudo dd if=/dev/zero bs=1M count=1024 of=/mnt/1GiB.swap

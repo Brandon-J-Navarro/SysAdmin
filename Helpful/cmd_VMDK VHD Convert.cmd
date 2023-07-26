@@ -20,33 +20,6 @@
 : OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 : SOFTWARE.
 
-: Version 202307
-
-: .NOTES
-:     Name: cmd_VMDK VHD Convert.cmd
-:     Requires: 
-:     Major Release History:
-:         06/01/2023  - Initial Creation.
-:         07/25/2023  - Initial Release.
-
-: .SYNOPSIS
-:     None
-
-: .DESCRIPTION
-:     None
-
-: .PARAMETER none
-:     None
-
-: .INPUTS
-:     None
-
-: .OUTPUTS
-:     None
-
-: .EXAMPLE
-:     None
-
 : VMDK TO VHD
 : 1. Install VirtualBox
     : a. (Extract .vmdk from OVA using 7zip)

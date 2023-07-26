@@ -31,26 +31,8 @@ SOFTWARE.
     Major Release History:
         07/11/2023  - Initial Creation.
         07/25/2023  - Initial Release.
-
-.SYNOPSIS
-    None
-
-.DESCRIPTION
-    None
-
-.PARAMETER none
-    None
-
-.INPUTS
-    None
-
-.OUTPUTS
-    None
-
-.EXAMPLE
-    None
-
 #>
+
 #-------------Required Trello Information-------------
 $apiKey = "[KEY]"
 $apiToken = "[TOKEN]"
