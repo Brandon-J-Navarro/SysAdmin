@@ -1,0 +1,3 @@
+https://github.com/oracle/docker-images/blob/main/OracleDatabase/SingleInstance/README.md
+docker pull container-registry.oracle.com/database/free:latest
+https://github.com/oracle/container-images/tree/fdb2fe48e4e849498751af43e5eb6d624d30e856
