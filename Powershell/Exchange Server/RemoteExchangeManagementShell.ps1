@@ -58,5 +58,5 @@ SOFTWARE.
 Invoke-Command -Session (Get-PSSession | Where-Object ComputerName -eq "[EXCHANGEHOSTNAME]") -ScriptBlock {
     $env:PSModulePath = $env:PSModulePath+';C:\Program Files\PowerShell\7\Modules\;C:\Program Files\Microsoft\Exchange Server\V15\bin\'
     Import-Module 'C:\Program Files\Microsoft\Exchange Server\V15\bin\RemoteExchange.ps1'; Connect-ExchangeServer -ServerFqdn [EXCHANGEHOSTNAME] -ClientApplication:ManagementShell -UserName [DOMAIN\USERNAME]
-    Import-Module "getExhangeTransportLogs.ps1"
+    Import-Module "ExhangeTransportLogs.ps1"
 } -AsJob
