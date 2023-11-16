@@ -1,0 +1,20 @@
+USE Master;
+GO
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'SuperStrongPasswordHere';
+GO
+CREATE CERTIFICATE MyCertificateName WITH SUBJECT = 'My DEK Certificate'; -- SUBJECT IS issuer_name
+GO
+
+SELECT * FROM sys.symmetric_keys;
+
+SELECT * FROM sys.certificates;
+
+USE AdventureWorks2019;
+GO
+CREATE DATABASE ENCRYPTION KEY 
+WITH ALGORITHM = AES_256 
+ENCRYPTION BY SERVER CERTIFICATE MyCertificateName;
+GO
+ALTER DATABASE AdventureWorks2019
+SET ENCRYPTION ON;
+GO
