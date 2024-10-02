@@ -17,7 +17,7 @@
             ],
             "volumes": [
                 {
-                    "bind": "/portainer/Files/AppData/Config/oracledata",
+                    "bind": "/portainer/Files/AppData/Config/DockerRegistry",
                     "container": "/var/lib/registry"
                 }
             ]
@@ -38,6 +38,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/RegistryCache",
                     "container": "/var/lib/registry"
                 }
             ],
@@ -94,9 +95,11 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/NGNIX",
                     "container": "/etc/nginx"
                 },
                 {
+                    "bind": "/portainer/Files/AppData/Config/NGNIX_HTML",
                     "container": "/usr/share/nginx/html"
                 }
             ]
@@ -117,6 +120,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/httpd",
                     "container": "/usr/local/apache2/htdocs/"
                 }
             ]
@@ -137,6 +141,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/Caddy",
                     "container": "/data"
                 }
             ]
@@ -168,6 +173,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/MySQL5-7",
                     "container": "/var/lib/mysql"
                 }
             ]
@@ -194,6 +200,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/Mariadb",
                     "container": "/var/lib/mysql"
                 }
             ]
@@ -224,6 +231,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/PostgreSQL",
                     "container": "/var/lib/postgresql/data"
                 }
             ]
@@ -244,6 +252,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/Mongo",
                     "container": "/data/db"
                 }
             ]
@@ -265,6 +274,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/CrateDB",
                     "container": "/data"
                 }
             ]
@@ -286,6 +296,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/ElasticSearch",
                     "container": "/usr/share/elasticsearch/data"
                 }
             ]
@@ -310,12 +321,15 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/GitLab/etc",
                     "container": "/etc/gitlab"
                 },
                 {
+                    "bind": "/portainer/Files/AppData/Config/GitLab/var/log",
                     "container": "/var/log/gitlab"
                 },
                 {
+                    "bind": "/portainer/Files/AppData/Config/GitLab/var/opt",
                     "container": "/var/opt/gitlab"
                 }
             ]
@@ -347,9 +361,11 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/Minio/data",
                     "container": "/data"
                 },
                 {
+                    "bind": "/portainer/Files/AppData/Config/Minio/root",
                     "container": "/root/.minio"
                 }
             ],
@@ -381,9 +397,11 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/ScalityS3/localData",
                     "container": "/usr/src/app/localData"
                 },
                 {
+                    "bind": "/portainer/Files/AppData/Config/ScalityS3/localMetadata",
                     "container": "/usr/src/app/localMetadata"
                 }
             ]
@@ -412,6 +430,12 @@
                 {
                     "name": "SA_PASSWORD",
                     "label": "SA password"
+                }
+            ],
+            "volumes": [
+                {
+                    "bind": "/portainer/Files/AppData/Config/SQLServer",
+                    "container": "/usr/sqlServer"
                 }
             ]
         },
@@ -694,7 +718,7 @@
             "image": "cloudflare/cloudflared:latest",
             "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/cloudflared.svg",
             "name": "cloudflared-tunnel",
-            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.cloudflare.com/products/tunnel/\" target=\"_blank\">https://www.cloudflare.com/products/tunnel/</a><br><b>Official Docker Documentation: </b><a href=\"https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/\" target=\"_blank\">https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/</a><br><br><br>Requires a token in order to work. You can find the dashboard <a href='https://dash.teams.cloudflare.com/'>here</a>. Once you logged in, go to Access followed by Tunnels. Create a tunnel. After you gave it a name you'll see in the command section a long string of chacters. This is your token you must copy.",
+            "note": "<b>Official Docker Documentation: </b><a href=\"https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/\" target=\"_blank\">https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/</a><br><br><br>Requires a token in order to work. You can find the dashboard <a href='https://dash.teams.cloudflare.com/'>here</a>. Once you logged in, go to Access followed by Tunnels. Create a tunnel. After you gave it a name you'll see in the command section a long string of chacters. This is your token you must copy.",
             "platform": "linux",
             "command": "tunnel run",
             "restart_policy": "unless-stopped",
@@ -742,7 +766,7 @@
                     "container": "/config"
                 }
             ],
-            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://hub.docker.com/r/linuxserver/filezilla\" target=\"_blank\">https://hub.docker.com/r/linuxserver/filezilla</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/linuxserver/filezilla\" target=\"_blank\">https://hub.docker.com/r/linuxserver/filezilla</a><br><br><br>"
+            "note": "<b>Official Webpage: </b><a href=\"https://hub.docker.com/r/linuxserver/filezilla\" target=\"_blank\">https://hub.docker.com/r/linuxserver/filezilla</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/linuxserver/filezilla\" target=\"_blank\">https://hub.docker.com/r/linuxserver/filezilla</a><br><br><br>"
         },
 
         {
@@ -764,7 +788,7 @@
             "restart_policy": "unless-stopped",
             "title": "Grafana",
             "type": 3,
-            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://grafana.com/grafana/\" target=\"_blank\">https://grafana.com/grafana/</a><br><b>Official Docker Documentation: </b><a href=\"https://grafana.com/docs/grafana/v9.0/setup-grafana/installation/docker/\" target=\"_blank\">https://grafana.com/docs/grafana/v9.0/setup-grafana/installation/docker/</a><br><br><h3><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_grafana.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_grafana.sh | bash</h3><br><br>"
+            "note": "<b>Official Webpage: </b><a href=\"https://grafana.com/grafana/\" target=\"_blank\">https://grafana.com/grafana/</a><br><b>Official Docker Documentation: </b><a href=\"https://grafana.com/docs/grafana/v9.0/setup-grafana/installation/docker/\" target=\"_blank\">https://grafana.com/docs/grafana/v9.0/setup-grafana/installation/docker/</a><br><br><h3><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_grafana.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_grafana.sh | bash</h3><br><br>"
         },
 
         {
@@ -797,7 +821,7 @@
             "restart_policy": "unless-stopped",
             "title": "Graylog",
             "type": 3,
-            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.graylog.org\" target=\"_blank\">https://www.graylog.org</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.graylog.org/docs/docker\" target=\"_blank\">https://docs.graylog.org/docs/docker</a><br><h3><b>Pi-Hosted dedicated documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/graylog_install.md\" target=\"_blank\">graylog_install.md</a></h3><br><br><br>"
+            "note": "<b>Official Webpage: </b><a href=\"https://www.graylog.org\" target=\"_blank\">https://www.graylog.org</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.graylog.org/docs/docker\" target=\"_blank\">https://docs.graylog.org/docs/docker</a><br><h3><b>Pi-Hosted dedicated documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/graylog_install.md\" target=\"_blank\">graylog_install.md</a></h3><br><br><br>"
         },
 
         {
@@ -850,11 +874,11 @@
             "type": 1,
             "volumes": [
                 {
-                    "bind": "/portainer/Files/AppData/Config/Mariadb",
+                    "bind": "/portainer/Files/AppData/Config/Linuxserver_Mariadb",
                     "container": "/config"
                 }
             ],
-            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://mariadb.org/\" target=\"_blank\">https://mariadb.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.linuxserver.io/images/docker-mariadb\" target=\"_blank\">https://docs.linuxserver.io/images/docker-mariadb</a><br><br><br>"
+            "note": "<b>Official Webpage: </b><a href=\"https://mariadb.org/\" target=\"_blank\">https://mariadb.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.linuxserver.io/images/docker-mariadb\" target=\"_blank\">https://docs.linuxserver.io/images/docker-mariadb</a><br><br><br>"
         },
 
         {
@@ -901,7 +925,7 @@
                     "container": "/var/lib/mysql"
                 }
             ],
-            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.mysql.com/\" target=\"_blank\">https://www.mysql.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/_/mysql\" target=\"_blank\">https://hub.docker.com/_/mysql</a><br><br><br>"
+            "note": "<b>Official Webpage: </b><a href=\"https://www.mysql.com/\" target=\"_blank\">https://www.mysql.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/_/mysql\" target=\"_blank\">https://hub.docker.com/_/mysql</a><br><br><br>"
         },
 
         {
@@ -935,11 +959,11 @@
             "type": 1,
             "volumes": [
                 {
-                    "bind": "/portainer/Files/AppData/Config/Nginx",
+                    "bind": "/portainer/Files/AppData/Config/Linuxserver_Nginx",
                     "container": "/config"
                 }
             ],
-            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://nginx.org/en/\" target=\"_blank\">https://nginx.org/en/</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.linuxserver.io/images/docker-nginx\" target=\"_blank\">https://docs.linuxserver.io/images/docker-nginx</a><br><br><br>"
+            "note": "<b>Official Webpage: </b><a href=\"https://nginx.org/en/\" target=\"_blank\">https://nginx.org/en/</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.linuxserver.io/images/docker-nginx\" target=\"_blank\">https://docs.linuxserver.io/images/docker-nginx</a><br><br><br>"
         },
 
         {
@@ -974,7 +998,7 @@
                     "container": "/dev/net/tun"
                 }
             ],
-            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://tailscale.com/\" target=\"_blank\">https://tailscale.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/tailscale/tailscale\" target=\"_blank\">https://hub.docker.com/r/tailscale/tailscale</a><br><br><br>"
+            "note": "<b>Official Webpage: </b><a href=\"https://tailscale.com/\" target=\"_blank\">https://tailscale.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/tailscale/tailscale\" target=\"_blank\">https://hub.docker.com/r/tailscale/tailscale</a><br><br><br>"
         },
 
         {
@@ -1026,7 +1050,7 @@
             },
             "title": "Wireguard Server",
             "type": 3,
-            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/WeeJeWel/wg-easy/\" target=\"_blank\">https://github.com/WeeJeWel/wg-easy/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/WeeJeWel/wg-easy/#1-install-docker\" target=\"_blank\">https://github.com/WeeJeWel/wg-easy/#1-install-docker</a><br><h3><b>Pi-Hosted dedicated documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/wireguard-install.md\" target=\"_blank\">wireguard-install.md</a></h3><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=yB_jAumIxOg target=\"_blank\">Novaspirit Tech - Beginners Guide to WireGuard Docker and Installing Pi-OS 64bit</a><br><br>"
+            "note": "<b><b>Official Webpage: </b><a href=\"https://github.com/WeeJeWel/wg-easy/\" target=\"_blank\">https://github.com/WeeJeWel/wg-easy/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/WeeJeWel/wg-easy/#1-install-docker\" target=\"_blank\">https://github.com/WeeJeWel/wg-easy/#1-install-docker</a><br><h3><b>Pi-Hosted dedicated documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/wireguard-install.md\" target=\"_blank\">wireguard-install.md</a></h3><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=yB_jAumIxOg target=\"_blank\">Novaspirit Tech - Beginners Guide to WireGuard Docker and Installing Pi-OS 64bit</a><br><br>"
         },
 
         {
@@ -1058,7 +1082,7 @@
             "type": 1,
             "volumes": [
                 {
-                    "bind": "/portainer/Files/AppData/Config/oracledata",
+                    "bind": "/portainer/Files/AppData/Config/OracleData",
                     "container": "/opt/oracle/oradata"
                 }
             ],
