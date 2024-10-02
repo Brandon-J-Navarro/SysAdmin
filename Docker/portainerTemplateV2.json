@@ -17,6 +17,7 @@
             ],
             "volumes": [
                 {
+                    "bind": "/portainer/Files/AppData/Config/oracledata",
                     "container": "/var/lib/registry"
                 }
             ]
@@ -1026,6 +1027,47 @@
             "title": "Wireguard Server",
             "type": 3,
             "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/WeeJeWel/wg-easy/\" target=\"_blank\">https://github.com/WeeJeWel/wg-easy/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/WeeJeWel/wg-easy/#1-install-docker\" target=\"_blank\">https://github.com/WeeJeWel/wg-easy/#1-install-docker</a><br><h3><b>Pi-Hosted dedicated documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/wireguard-install.md\" target=\"_blank\">wireguard-install.md</a></h3><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=yB_jAumIxOg target=\"_blank\">Novaspirit Tech - Beginners Guide to WireGuard Docker and Installing Pi-OS 64bit</a><br><br>"
+        },
+
+        {
+            "categories": [
+                "Monitor",
+                "Tools"
+            ],
+            "description": "Oracle Database",
+            "logo": "https://m.media-amazon.com/images/I/41QodfboFdL.png",
+            "name": "oracle",
+            "platform": "linux",
+            "ports": [
+                "1521:1521/tcp"
+            ],
+            "image": "container-registry.oracle.com/database/free:latest",
+
+            "env": [
+                {
+                    "default": "ENTER AN ADMIN PASSWORD",
+                    "description": "ADMIN PASSWORD",
+                    "label": "ORACLE_PWD",
+                    "name": "ORACLE_PWD"
+                },
+                {
+                    "default": "ENTER A DATABASE NAME",
+                    "description": "DATABASE NAME",
+                    "label": "ORACLE_PDB",
+                    "name": "ORACLE_PDB"
+                }
+            ],
+
+            "type": 1,
+            "volumes": [
+                {
+                    "bind": "/portainer/Files/AppData/Config/oracledata",
+                    "container": "/opt/oracle/oradata"
+                }
+            ],
+
+            "restart_policy": "unless-stopped",
+            "title": "Oracle DB"
         }
     ]
 }
