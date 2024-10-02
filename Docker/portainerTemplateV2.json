@@ -416,7 +416,7 @@
         },
         {
             "id": 22,
-            "type": 2,
+            "type": 1,
             "title": "Swarm monitoring",
             "description": "Monitor your cluster performances with Prometheus & Grafana",
             "note": "Requires Docker version 19.03.0+. <b>Make sure to add the <code>monitoring == true</code> one of your Swarm manager node before deploying this stack.</b>",
@@ -443,7 +443,7 @@
         },
         {
             "id": 23,
-            "type": 2,
+            "type": 1,
             "title": "Redis Cluster",
             "description": "Open-source in-memory data structure store - Cluster mode",
             "categories": [
@@ -462,27 +462,7 @@
                 }
             ]
         },
-        {
-            "id": 24,
-            "type": 1,
-            "title": "RabbitMQ",
-            "description": "Highly reliable enterprise messaging system",
-            "categories": [
-                "messaging"
-            ],
-            "platform": "linux",
-            "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/rabbitmq.png",
-            "image": "rabbitmq:latest",
-            "ports": [
-                "5671/tcp",
-                "5672/tcp"
-            ],
-            "volumes": [
-                {
-                    "container": "/var/lib/rabbitmq"
-                }
-            ]
-        },
+
         {
             "id": 29,
             "type": 1,
@@ -551,7 +531,7 @@
         },
         {
             "id": 39,
-            "type": 2,
+            "type": 1,
             "title": "Portainer Agent",
             "description": "Manage all the resources in your Swarm cluster",
             "note": "The agent will be deployed globally inside your cluster and available on port 9001.",
@@ -567,7 +547,7 @@
         },
         {
             "id": 42,
-            "type": 2,
+            "type": 1,
             "title": "CockroachDB",
             "description": "CockroachDB cluster",
             "note": "Deploys an insecure CockroachDB cluster, please refer to <a href=\"https://www.cockroachlabs.com/docs/stable/orchestrate-cockroachdb-with-docker-swarm.html\" target=\"_blank\">CockroachDB documentation</a> for production deployments.",
@@ -583,7 +563,7 @@
         },
         {
             "id": 43,
-            "type": 2,
+            "type": 1,
             "title": "WordPress",
             "description": "WordPress setup with a MySQL database",
             "note": "Deploys a WordPress instance connected to a MySQL database.",
@@ -630,7 +610,7 @@
         {
             "id": 49,
             "title": "Datadog agent",
-            "type": 2,
+            "type": 1,
             "categories": [
                 "Monitoring"
             ],
