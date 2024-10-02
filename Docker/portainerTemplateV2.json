@@ -1031,8 +1031,7 @@
 
         {
             "categories": [
-                "Monitor",
-                "Tools"
+                "database"
             ],
             "description": "Oracle Database",
             "logo": "https://m.media-amazon.com/images/I/41QodfboFdL.png",
@@ -1042,7 +1041,6 @@
                 "1521:1521/tcp"
             ],
             "image": "container-registry.oracle.com/database/free:latest",
-
             "env": [
                 {
                     "default": "ENTER AN ADMIN PASSWORD",
@@ -1057,7 +1055,6 @@
                     "name": "ORACLE_PDB"
                 }
             ],
-
             "type": 1,
             "volumes": [
                 {
@@ -1065,7 +1062,6 @@
                     "container": "/opt/oracle/oradata"
                 }
             ],
-
             "restart_policy": "unless-stopped",
             "title": "Oracle DB"
         }
