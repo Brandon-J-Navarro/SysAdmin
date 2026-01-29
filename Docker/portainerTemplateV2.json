@@ -409,7 +409,7 @@
         {
             "id": 17,
             "type": 1,
-            "title": "SQL Server",
+            "title": "SQL Server 2019",
             "description": "Microsoft SQL Server on Linux",
             "categories": [
                 "database"
@@ -442,7 +442,7 @@
         {
             "id": 18,
             "type": 1,
-            "title": "SQL Server",
+            "title": "SQL Server 2022",
             "description": "Microsoft SQL Server on Linux",
             "categories": [
                 "database"
