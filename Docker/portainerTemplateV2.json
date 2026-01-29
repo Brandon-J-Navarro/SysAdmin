@@ -440,6 +440,39 @@
             ]
         },
         {
+            "id": 18,
+            "type": 1,
+            "title": "SQL Server",
+            "description": "Microsoft SQL Server on Linux",
+            "categories": [
+                "database"
+            ],
+            "platform": "linux",
+            "note": "Password needs to include at least 8 characters including uppercase, lowercase letters, base-10 digits and/or non-alphanumeric symbols.",
+            "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/microsoft.png",
+            "image": "mcr.microsoft.com/mssql/server:2022-latest",
+            "ports": [
+                "1433/tcp"
+            ],
+            "env": [
+                {
+                    "name": "ACCEPT_EULA",
+                    "default": "Y",
+                    "preset": true
+                },
+                {
+                    "name": "SA_PASSWORD",
+                    "label": "SA password"
+                }
+            ],
+            "volumes": [
+                {
+                    "bind": "/portainer/Files/AppData/Config/SQLServer",
+                    "container": "/usr/sqlServer"
+                }
+            ]
+        },
+        {
             "id": 22,
             "type": 2,
             "title": "Swarm monitoring",
