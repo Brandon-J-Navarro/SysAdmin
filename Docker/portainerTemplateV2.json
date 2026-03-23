@@ -232,7 +232,7 @@
             "volumes": [
                 {
                     "bind": "/portainer/Files/AppData/Config/PostgreSQL",
-                    "container": "/var/lib/postgresql/data"
+                    "container": "/var/lib/postgresql/"
                 }
             ]
         },
@@ -1121,6 +1121,353 @@
             ],
             "restart_policy": "unless-stopped",
             "title": "Oracle DB"
+        },
+
+        {
+            "categories": [
+            "Productivity",
+            "Drawing"
+            ],
+            "description": "draw.io (formerly Diagramly) is free online diagram software. You can use it as a flowchart maker, network diagram software, to create UML online, as an ER diagram tool, to design database schema, to build BPMN online, as a circuit diagram maker, and more. draw.io can import .vsdx, Gliffy\u2122 and Lucidchart\u2122 files.",
+            "logo": "https://appedreview.com/app/wp-content/uploads/2016/10/Screen-Shot-2016-10-18-at-8.28.57-AM-768x766.png",
+            "name": "drawio",
+            "platform": "linux",
+            "repository": {
+            "stackfile": "Template/Stack/drawio.yml",
+            "url": "https://github.com/xneo1/portainer_templates"
+            },
+            "title": "Draw.io",
+            "type": 3,
+            "maintainer": " https://github.com/xneo1/portainer_templates/",
+            "id": 100
+        },
+
+        {
+            "categories": [
+            "Tools"
+            ],
+            "description": "DCM (Docker Compose Maker) is a simple yet powerful tool that helps you create docker-compose.yaml files for your self-hosted applications.",
+            "logo": "https://github.com/ajnart/dcm/raw/main/public/favicon.png",
+            "name": "dockercomposemaker",
+            "platform": "linux",
+            "repository": {
+            "stackfile": "Template/Stack/dockercomposemaker.yml",
+            "url": "https://github.com/xneo1/portainer_templates"
+            },
+            "title": "Docker Compose maker",
+            "type": 3,
+            "maintainer": " https://github.com/xneo1/portainer_templates/",
+            "id": 88
+        },
+
+        {
+            "type": 1,
+            "title": "Stirling PDF {shmolf}",
+            "name": "stirling-pdf",
+            "categories": [
+            "Tools",
+            "Pdf"
+            ],
+            "description": "Your locally hosted one-stop-shop for all your PDF needs.",
+            "note": "To support multiple languages for OCR, per the <a target='_blank' href='https://github.com/Stirling-Tools/Stirling-PDF/blob/main/HowToUseOCR.md'>Official documentation \ud83d\uddd7</a>, download your Tess Data from <a target='_blank' href='https://github.com/tesseract-ocr/tessdata'>from another repo \ud83d\uddd7</a>. <br>Then, place said 'traineddata' files into <code>/portainer/Files/AppData/Libraries/StirlingPDF/tessdata</code> <br>For more information about login, read <a target='_blank' href='https://github.com/Stirling-Tools/Stirling-PDF?tab=readme-ov-file#prerequisites'>the official documentation \ud83d\uddd7</a>.",
+            "logo": "https://raw.githubusercontent.com/shmolf/portainer-templates/main/assets/logos/stirling-pdf.svg",
+            "platform": "linux",
+            "image": "frooodle/s-pdf:0.18.1",
+            "ports": [
+            "5417:8080/tcp"
+            ],
+            "restart_policy": "unless-stopped",
+            "env": [
+            {
+                "label": "PUID",
+                "name": "PUID",
+                "default": "1000"
+            },
+            {
+                "label": "PGID",
+                "name": "PGID",
+                "default": "1000"
+            },
+            {
+                "label": "Enable Login",
+                "name": "DOCKER_ENABLE_SECURITY",
+                "select": [
+                {
+                    "text": "Yes, enable login",
+                    "value": "true"
+                },
+                {
+                    "text": "No, disable login",
+                    "value": "false",
+                    "default": true
+                }
+                ],
+                "description": "If you want to enable the login, you'll also need to enable login through the Config's settings.yml"
+            }
+            ],
+            "volumes": [
+            {
+                "bind": "/portainer/Files/AppData/Config/StirlingPDF",
+                "container": "/configs"
+            },
+            {
+                "bind": "/portainer/Files/AppData/Libraries/StirlingPDF/tessdata",
+                "container": "/usr/share/tesseract-ocr/5/tessdata"
+            }
+            ],
+            "maintainer": " https://github.com/shmolf/portainer-templates/",
+            "id": 442
+        },
+
+        {
+            "categories": [
+                "Other",
+                "Tools"
+            ],
+            "description": "A clientless remote desktop gateway.",
+            "image": "oznu/guacamole:latest",
+            "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/guacamole.png",
+            "name": "guacamole",
+            "note": "The default login will be guacadmin/guacadmin. It is common practice to add a new admin user and remove the default user for Guacamole.",
+            "platform": "linux",
+            "ports": [
+                "8080:8080/tcp"
+            ],
+            "restart_policy": "unless-stopped",
+            "title": "Guacamole",
+            "type": 1,
+            "volumes": [
+                {
+                "bind": "/portainer/Files/AppData/Config/Guacamole",
+                "container": "/config"
+                }
+            ],
+            "maintainer": " https://github.com/mikestraney/portainer-templates/",
+            "id": 166
+        },
+
+        {
+            "type": 1,
+            "title": "CrateDB",
+            "description": "An open-source distributed SQL database",
+            "categories": [
+                "Database"
+            ],
+            "platform": "linux",
+            "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cratedb.png",
+            "image": "crate:latest",
+            "ports": [
+                "4200/tcp",
+                "4300/tcp"
+            ],
+            "volumes": [
+                {
+                "container": "/data"
+                }
+            ],
+            "maintainer": " https://github.com/mikestraney/portainer-templates/",
+            "id": 68
+        },
+
+        {
+            "categories": [
+                "Productivity",
+                "Drawing"
+            ],
+            "description": "Virtual whiteboard for sketching hand-drawn like diagrams. Collaborative and end-to-end encrypted.",
+            "logo": "https://github.com/excalidraw/excalidraw/raw/master/public/og-image-sm.png",
+            "name": "excalidraw",
+            "platform": "linux",
+            "repository": {
+                "stackfile": "Template/Stack/excalidraw.yml",
+                "url": "https://github.com/xneo1/portainer_templates"
+            },
+            "title": "Excalidraw",
+            "type": 3,
+            "maintainer": " https://github.com/xneo1/portainer_templates/",
+            "id": 116
+        },
+
+        {
+            "categories": [
+                "Photos",
+                "Ai"
+            ],
+            "description": "Immich is a high performance self-hosted photo and video backup solution.",
+            "logo": "https://github.com/immich-app/immich/raw/main/design/immich-logo.svg",
+            "name": "immich",
+            "platform": "linux",
+            "repository": {
+                "stackfile": "Template/Stack/immich.yml",
+                "url": "https://github.com/xneo1/portainer_templates"
+            },
+            "title": "Immich",
+            "type": 3,
+            "maintainer": " https://github.com/xneo1/portainer_templates/",
+            "id": 190
+        },
+
+        {
+            "categories": [
+                "Network"
+            ],
+            "description": "IPerf3 Docker Build for Network Performance and Bandwidth Testing",
+            "logo": "",
+            "name": "iperf",
+            "platform": "linux",
+            "repository": {
+                "stackfile": "Template/Stack/iperf.yml",
+                "url": "https://github.com/xneo1/portainer_templates"
+            },
+            "title": "iperf",
+            "type": 3,
+            "maintainer": " https://github.com/xneo1/portainer_templates/",
+            "id": 200
+        },
+
+        {
+            "categories": [
+                "Tools",
+                "Productivity"
+            ],
+            "description": "This project is a lightweight authentication server that provides an opinionated, simplified LDAP interface for authentication.",
+            "env": [
+                {
+                "default": "somesecretjwt",
+                "label": "LLDAP_JWT_SECRET",
+                "name": "LLDAP_JWT_SECRET"
+                },
+                {
+                "default": "someadminpassword",
+                "label": "LLDAP_LDAP_USER_PASS",
+                "name": "LLDAP_LDAP_USER_PASS"
+                },
+                {
+                "default": "dc=example,dc=com",
+                "label": "LLDAP_LDAP_BASE_DN",
+                "name": "LLDAP_LDAP_BASE_DN"
+                }
+            ],
+            "image": "nitnelave/lldap:stable-debian",
+            "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/lldap.png",
+            "name": "LLDAP",
+            "platform": "linux",
+            "ports": [
+                "3890:3890/tcp",
+                "17170:17170/tcp"
+            ],
+            "restart_policy": "unless-stopped",
+            "title": "LLDAP",
+            "type": 1,
+            "volumes": [
+                {
+                "bind": "/portainer/Files/AppData/Config/lldap/data",
+                "container": "/data"
+                }
+            ],
+            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/nitnelave/lldap\" target=\"_blank\">https://github.com/nitnelave/lldap</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/nitnelave/lldap\" target=\"_blank\">https://github.com/nitnelave/lldap</a><br><br><h3><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_lldap.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_lldap.sh | bash</h3><br><br>",
+            "maintainer": " https://github.com/novaspirit/pi-hosted/",
+            "id": 241
+        },
+
+        {
+            "categories": [
+                "Other",
+                "Tools"
+            ],
+            "description": "PGAdmin is a web-based GUI tool used to interact with the Postgres database sessions, both locally and remote servers as well. You can use PGAdmin to perform any sort of database administration required for a Postgres database.",
+            "env": [
+                {
+                "default": "1000",
+                "label": "PUID",
+                "name": "PUID"
+                },
+                {
+                "default": "1000",
+                "label": "PGID",
+                "name": "PGID"
+                },
+                {
+                "default": "",
+                "label": "PGADMIN_DEFAULT_EMAIL",
+                "name": "PGADMIN_DEFAULT_EMAIL"
+                },
+                {
+                "default": "",
+                "label": "PGADMIN_DEFAULT_PASSWORD",
+                "name": "PGADMIN_DEFAULT_PASSWORD"
+                },
+                {
+                "default": "America/New_York",
+                "label": "TZ",
+                "name": "TZ"
+                }
+            ],
+            "image": "dpage/pgadmin4:latest",
+            "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/pgadmin.png",
+            "name": "pgadmin",
+            "platform": "linux",
+            "ports": [
+                "5050:80/tcp"
+            ],
+            "restart_policy": "unless-stopped",
+            "title": "pgAdmin",
+            "type": 1,
+            "volumes": [
+                {
+                "bind": "/portainer/Files/AppData/Config/pgadmin",
+                "container": "/var/lib/pgadmin"
+                }
+            ],
+            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.pgadmin.org/\" target=\"_blank\">https://www.pgadmin.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html\" target=\"_blank\">https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html</a><br><br><h3><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_pgadmin.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_pgadmin.sh | bash</h3><br><br>",
+            "maintainer": " https://github.com/novaspirit/pi-hosted/",
+            "id": 345
+        },
+
+        {
+            "categories": [
+                "Other",
+                "Tools"
+            ],
+            "description": "A remote desktop software, the open source TeamViewer alternative, works out of the box, no configuration required. You have full control of your data, with no concerns about security.",
+            "env": [
+                {
+                "default": "rustdesk.example.com:21117",
+                "description": "Use your domain with the default 21117 port",
+                "label": "RELAY",
+                "name": "RELAY"
+                },
+                {
+                "default": "1",
+                "description": "if set to \"1\" unencrypted connection will not be accepted",
+                "label": "ENCRYPTED_ONLY",
+                "name": "ENCRYPTED_ONLY"
+                }
+            ],
+            "image": "rustdesk/rustdesk-server-s6:latest",
+            "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/rustdesk.png",
+            "name": "rustdesk",
+            "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://rustdesk.com/\" target=\"_blank\">https://rustdesk.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/rustdesk/rustdesk-server\" target=\"_blank\">https://github.com/rustdesk/rustdesk-server</a><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=PDnqFnnbVHg target=\"_blank\">Novaspirit Tech - Rust Desk Open Source Remote Desktop</a><br><br>Don't forget to open ports 21115 to 21119 in your router.",
+            "platform": "linux",
+            "ports": [
+                "21115:21115/tcp",
+                "21116:21116/tcp",
+                "21116:21116/udp",
+                "21117:21117/tcp",
+                "21118:21118/tcp",
+                "21119:21119/tcp"
+            ],
+            "restart_policy": "unless-stopped",
+            "title": "RustDesk (container)",
+            "type": 1,
+            "volumes": [
+                {
+                "bind": "/portainer/Files/AppData/Config/rustdesk",
+                "container": "/data"
+                }
+            ],
+            "maintainer": " https://github.com/novaspirit/pi-hosted/",
+            "id": 403
         }
     ]
 }
