@@ -1247,29 +1247,6 @@
         },
 
         {
-            "type": 1,
-            "title": "CrateDB",
-            "description": "An open-source distributed SQL database",
-            "categories": [
-                "Database"
-            ],
-            "platform": "linux",
-            "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cratedb.png",
-            "image": "crate:latest",
-            "ports": [
-                "4200/tcp",
-                "4300/tcp"
-            ],
-            "volumes": [
-                {
-                "container": "/data"
-                }
-            ],
-            "maintainer": " https://github.com/mikestraney/portainer-templates/",
-            "id": 68
-        },
-
-        {
             "categories": [
                 "Productivity",
                 "Drawing"
